@@ -1,6 +1,5 @@
 # 🧠 slides.io
 
-### _AI-Powered PowerPoint Generator (Agentic AI Internship Project)_
 
 ---
 
