@@ -6,23 +6,19 @@ from pydantic import BaseModel
 from slidedeckai import SlideDeckAI
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 app = FastAPI()
 
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  
+    allow_origins=["http://localhost:8080"],  
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-
 OUTPUT_DIR = os.path.abspath("generated")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
-
 
 app.mount("/files", StaticFiles(directory=OUTPUT_DIR), name="files")
 
@@ -51,7 +47,7 @@ def generate_prompt(req: GenerateReq):
         
         return {
             "status": "success",
-            "path": f"/files/{filename}"
+            "path": f"/files/{filename}"                    
         }
 
     except Exception as e:
